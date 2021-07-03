@@ -1,11 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Teste from './componentes/teste';
+import React from 'react';
+import BarraNavegacao from './componentes/BarraNavegacao';
+import Footer from './componentes/Footer';
+import Home from './componentes/Home';
 
 function App() {
   return (
-    <Teste />
+    <React.Fragment>
+      <BarraNavegacao />
+      <Home />
+      <Footer />      
+      </React.Fragment>
   );
 }
 
