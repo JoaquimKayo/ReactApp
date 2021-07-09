@@ -19,8 +19,8 @@ class BarraNavegacao extends Component {
                     </Navbar.Brand>
                     <Nav className="mr-auto">
                         <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/usuario">Usuários</Nav.Link>
-                        <Nav.Link href="/veiculo">Veículos</Nav.Link>
+                        <Nav.Link href="/usuarios">Usuários</Nav.Link>
+                        <Nav.Link href="/veiculos">Veículos</Nav.Link>
                     </Nav>
 
                 </Navbar>

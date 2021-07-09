@@ -25,6 +25,7 @@
 }
 
 .App-main {
+
   background-color: #fff;
   min-height: 100vh;
   display: flex;
@@ -46,4 +47,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+Table{
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  padding: 20px;
 }
