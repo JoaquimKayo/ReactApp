@@ -11,6 +11,9 @@ class ListaUsuario extends Component {
         }
 
         this.voltar = this.voltar.bind(this);
+        this.novoUsuario = this.novoUsuario.bind(this);
+        this.deletaUsuario = this.deletaUsuario.bind(this);
+        this.atualizaUsuario = this.atualizaUsuario.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +31,26 @@ class ListaUsuario extends Component {
 
     voltar() {
         this.props.history.push("/");
+    }
+
+    novoUsuario() {
+        this.props.history.push("/usuario/_add");
+    }
+
+    deletaUsuario(id) {
+        UserService.deleteUser(id).then(
+            res => {
+                alert(res.data);
+                this.getUsuario();
+            }
+        ).catch(error => {
+            console.log("Error: " + error);
+            alert("Deu pau.." + error);
+        });
+    }
+
+    atualizaUsuario(id) {
+        this.props.history.push("/usuario/" + id);
     }
 
     render() {
@@ -50,7 +73,9 @@ class ListaUsuario extends Component {
                         <tbody>
                             {
                                 this.state.usuarios.map(
+
                                     usuario =>
+
                                         <tr key={usuario.id_usuario}>
                                             <td>
                                                 {usuario.id_usuario}
@@ -65,8 +90,8 @@ class ListaUsuario extends Component {
                                                 {usuario.email}
                                             </td>
                                             <td>
-                                                <Button variant="danger mx-2" onClick="">Deletar</Button>
-                                                <Button variant="warning" onClick="">Atualizar</Button>
+                                                <Button variant="danger mx-2" onClick={() => this.deletaUsuario(usuario.id_usuario)}>Deletar</Button> {/*onClick={this.deletaUsuario(usuario.id_usuario)} */}
+                                                <Button variant="warning" onClick={() => this.atualizaUsuario(usuario.id_usuario)}>Atualizar</Button>
                                             </td>
                                         </tr>
                                 )
@@ -77,10 +102,10 @@ class ListaUsuario extends Component {
                 </Row>
                 <Row>
                     <Col sm={10}>
-                        <Button className="float-left" variant="primary" onClick={this.voltar}>Voltar</Button>
+                        <Button className="float-left" variant="primary" onClick={this.voltar} >Voltar</Button>
                     </Col>
                     <Col sm={2}>
-                        <Button className="float-right" variant="success" onClick="">Novo Usuário</Button>
+                        <Button className="float-right" variant="success" onClick={this.novoUsuario}>Novo Usuário</Button>
                     </Col>
                 </Row>
 

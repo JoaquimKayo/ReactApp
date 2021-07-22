@@ -13,6 +13,10 @@
   }
 }
 
+.margin-bottom-150{
+  margin-bottom: 150px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,8 +28,13 @@
   color: white;
 }
 
-.App-main {
+.App-footer{
+  position:relative;
+  bottom:0;
+  width:100%;
+}
 
+.App-main {
   background-color: #fff;
   min-height: 100vh;
   display: flex;

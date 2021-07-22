@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Footer extends Component {
     render() {
         return (
-            <footer class="fixed-bottom bg-light text-center text-white mt-5">
+            <footer class="fixed-bottom bg-light text-center text-white">
                 {/* <!-- Grid container --> */}
                 <div class="container p-4 pb-0 mt-0">
                     {/* <!-- Section: Social media --> */}

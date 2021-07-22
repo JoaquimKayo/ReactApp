@@ -11,6 +11,9 @@ class ListaVeiculo extends Component {
         }
 
         this.voltar = this.voltar.bind(this);
+        this.novoVeiculo = this.novoVeiculo.bind(this);
+        this.deletaVeiculo = this.deletaVeiculo.bind(this);
+        this.atualizaVeiculo = this.atualizaVeiculo.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +31,26 @@ class ListaVeiculo extends Component {
 
     voltar() {
         this.props.history.push("/");
+    }
+
+    novoVeiculo(){
+        this.props.history.push("/veiculo/_add");
+    }
+
+    atualizaVeiculo(id){
+        this.props.history.push("/veiculo/"+id);
+    }
+
+    deletaVeiculo(id){
+        VehicleService.deleteVehicle(id).then(
+            res => {
+                alert(res.data);
+                this.getVeiculo();
+            }
+        ).catch(error => {
+            console.log("Deu pau.. "+ error);
+            alert("Deu erro :( --> "+error);
+        })
     }
 
     render() {
@@ -77,8 +100,8 @@ class ListaVeiculo extends Component {
                                                 {veiculo.combustivel}
                                             </td>
                                             <td>
-                                                <Button variant="danger mx-2" onClick="">Deletar</Button>
-                                                <Button variant="warning" onClick="">Atualizar</Button>
+                                                <Button variant="danger mx-2" onClick={() => this.deletaVeiculo(veiculo.id_veiculo)}>Deletar</Button>
+                                                <Button variant="warning" onClick={() => this.atualizaVeiculo(veiculo.id_veiculo)}>Atualizar</Button>
                                             </td>
                                         </tr>
                                 )
@@ -94,7 +117,7 @@ class ListaVeiculo extends Component {
                         <Button className="float-left" variant="primary" onClick={this.voltar}>Voltar</Button>
                     </Col>
                     <Col sm={2}>
-                        <Button className="float-right" variant="success" onClick="">Novo Veículo</Button>
+                        <Button className="float-right" variant="success" onClick={this.novoVeiculo}>Novo Veículo</Button>
                     </Col>
                 </Row>
             </Container>
